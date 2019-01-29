@@ -9,7 +9,6 @@ gem 'rails', '~> 5.2.2'
 group :development do
       gem 'sqlite3'
 end
-gem 'carrierwave'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -62,6 +61,6 @@ gem 'carrierwave-aws'
 gem 'mini_magick'
 
 group :production do
-      gem 'pg', '0.18.4'
-          gem 'rails_12factor', '0.0.2'
+  gem 'pg', '0.18.4'
+  gem 'rails_12factor', '0.0.2'
 end
