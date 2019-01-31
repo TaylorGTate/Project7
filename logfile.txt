@@ -1,0 +1,42 @@
+commit 7b47fd140bfa6054a78c67b28b6292afd5904df2
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Mon Jan 28 23:32:18 2019 -0500
+
+    Had to make changes to the Gemfile of the app.
+
+commit dfd629afd83cff591923658e975b9deae2603a3d
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Mon Jan 28 22:54:43 2019 -0500
+
+    Getting the app ready to be deployed on Heroku
+    .
+
+commit 3d8fbddf8776e2f0c38ed2e45099184e72b48afe
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Mon Jan 28 22:15:56 2019 -0500
+
+    Added the ablity to upload a picture from a local file system onto the website as a book cover.
+
+commit 3cf1f21b3cfa491b4a9d1769446413f17c23ab62
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Mon Jan 28 20:25:19 2019 -0500
+
+    Created the catalog listing that the buyer will see. Made the catalog look nicer with scss files. Also pulled the info from the database to be put into the catalog.
+
+commit ba6195251f212857477034959751bac09b26f273
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Mon Jan 28 17:39:48 2019 -0500
+
+    Added in validation to each of the categories of the catalog. So that when a seller goes to submit a catalog submission it stops them if it detects a blank category or an invalidly filled out category.
+
+commit 7ed4ac297fc2a5a36994ac47fecb32b8b4f00fe5
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Mon Jan 28 17:20:38 2019 -0500
+
+    Added in the Product Maintenance Application. Added in a database and then made the display of the database onto the seller's index page look better. Also added items that are for sale into our database. The maintenance application also features a way for sellers to edit already added items in their catalogs.
+
+commit c78775b3cf9a535ca53abac535b488d438fda5ec
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Mon Jan 28 14:31:59 2019 -0500
+
+    Just created a Rails Project
