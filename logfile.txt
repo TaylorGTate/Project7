@@ -1,3 +1,9 @@
+commit c89d2740308cdde573a9d5e252f1485e20c9cb90
+Author: taylortate4 <tgtate@valdosta.edu>
+Date:   Wed Jan 30 19:31:28 2019 -0500
+
+    Made it to were on the edit page it shows the picture you choose. Also fixed the size of the picture on the show page.
+
 commit 7b47fd140bfa6054a78c67b28b6292afd5904df2
 Author: taylortate4 <tgtate@valdosta.edu>
 Date:   Mon Jan 28 23:32:18 2019 -0500

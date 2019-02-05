@@ -5,7 +5,7 @@
 .store {
   max-width: 80em;
   ul.catalog {
-    border-top: solid 0.250em;
+    border-top: solid .250em;
     list-style: none;
     padding:0;
     margin:0;
@@ -26,6 +26,8 @@
         padding: 1em;
         margin-right: 1em;
         margin-bottom: 1em;
+        width: 13em;
+        height: 15em;
         box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,0.75);
       }
       .price {
