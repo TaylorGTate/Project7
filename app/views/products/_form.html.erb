@@ -18,13 +18,13 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description, rows: 10, cols: 60 %>
+    <%= form.text_area :description %>
   </div>
 
   <div class="field">
     <%= form.label :image_url %>
     <%= image_tag(@product.image_url.url, width: 200) if @product.image_url.url.present? %>
-   </br>
+    </br>
     <%= form.file_field :image_url %>
   </div>
 
