@@ -13,24 +13,24 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, id: :product_title %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, id: :product_description, rows: 10, cols: 60 %>
   </div>
 
   <div class="field">
     <%= form.label :image_url %>
-    <%= image_tag(@product.image_url.url, width: 200) if @product.image_url.url.present? %>
+    <%= image_tag(@product.image_url.url, width: 200) if @product.image_url.url.present?%>
     </br>
     <%= form.file_field :image_url %>
   </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, id: :product_price %>
   </div>
 
   <div class="actions">

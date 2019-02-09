@@ -1,8 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
 
 <p>
   <strong> title:</strong>
-  <%= @product. title %>
+  <%= @product.title %>
 </p>
 
 <p>

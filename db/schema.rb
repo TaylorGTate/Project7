@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_174102) do
     t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "popularity"
+    t.decimal "popularity", default: "0.0"
   end
 
 end
