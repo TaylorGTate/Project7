@@ -30,7 +30,12 @@
     @media (min-width: 30em) {
       display: block;
       img {
-         height: 11.3em;
+        float : left;
+        padding: 1em;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        width: 13em;
+        height: 15em;
       }
     }
   }
