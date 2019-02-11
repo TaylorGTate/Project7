@@ -61,6 +61,11 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
+      unless @errors
+        format.html {redirect_to products_url,
+          notice: 'Product is a line item.' }
+        format.json { head :no_content }
+      end
       format.html { redirect_to products_url,
           notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
