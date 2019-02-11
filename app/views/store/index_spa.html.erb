@@ -1,0 +1,9 @@
+<% if notice %>
+    <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<%= content_tag :div,
+    id: "catalog"  do %>
+
+    <%= javascript_pack_tag 'catalog' %>
+<% end %>
