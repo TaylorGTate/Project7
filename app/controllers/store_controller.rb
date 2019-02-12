@@ -5,7 +5,11 @@ class StoreController < ApplicationController
   	else
   		session[:counter] = session[:counter] + 1
   	end
-  end	
+  end
+  def search
+      products = Product.where("title LIKE '%#{params[:query]}%'")
+      render json: products
+  end
   def index
   	@counter = sess_counter
     @show_counter = "You've visited this page #{@counter} times without buying anything... come on."if @counter > 5
