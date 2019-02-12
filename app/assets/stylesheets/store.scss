@@ -50,6 +50,9 @@
       input[type="submit"]:hover {
         background-color: #141;
       }
+      th.sortable {
+          cursor: pointer;
+      }
     }
   }
 }
