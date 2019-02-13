@@ -7,8 +7,8 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails51 for more book information.
 #---
 class LineItemsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   include CurrentCart
+  skip_before_action :verify_authenticity_token
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
@@ -37,12 +37,11 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
-
+    session[:counter] = 0
+    product.popularity = product.popularity + 1
+    product.update_attribute(:popularity, product.popularity)
     respond_to do |format|
       if @line_item.save
-        session[:counter] = 0
-        product.popularity = product.popularity + 1
-        product.update_attribute(:popularity, product.popularity)    
         format.html { redirect_to @line_item.cart}
         format.json { redirect_to cart_path(@line_item.cart)} 
       else

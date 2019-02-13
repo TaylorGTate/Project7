@@ -6,6 +6,9 @@ export default class BookList extends React.Component {
   handleSortColumn = (name, order) => {
         this.props.handleSortColumn(name, order);
   };
+  handleAddToCart = (id) =>{
+    this.props.handleAddToCart(id);
+  };
   render = () => {
     var books = [];
 
@@ -13,6 +16,13 @@ export default class BookList extends React.Component {
       books.push(<Book book={book}
                          key={'book' + book.id}/>);
       }
+    );
+    var self = this;
+    this.props.books.forEach(function(book) {
+      books.push(<Book book={book}
+                       key={'book' + book.id}
+                       handleAddToCart={self.handleAddToCart} />);
+    }
     );
 
     return(
@@ -47,7 +57,8 @@ export default class BookList extends React.Component {
     						order={this.props.order}
     						handleSortColumn={this.handleSortColumn}
   						/>
-					</th>            
+					</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>

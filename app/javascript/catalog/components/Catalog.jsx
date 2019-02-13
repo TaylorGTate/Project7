@@ -22,7 +22,21 @@ export default class Catalog extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-   };  
+   };
+   handleAddToCart = (id) => {
+    var self = this;
+
+    axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
+    axios.post('/line_items', {product_id: id})
+        .then(function (response) {
+            console.log(response);
+            window.location = response.headers.location;
+         })
+        .catch(function (error) {
+            console.log(error);
+            alert('Cannot sort events: ', error);
+    }); 
+   };
    handleSearch = (books) => {
     this.setState({ books: books });
 	 };
@@ -56,7 +70,8 @@ export default class Catalog extends React.Component {
               				<BookList   books={this.state.books}
                       sort ={this.state.sort}
                       order={this.state.order}
-                      handleSortColumn={this.handleSortColumn} />
+                      handleSortColumn={this.handleSortColumn}
+                      handleAddToCart={this.handleAddToCart} />
               </div>
       			</div>  
         	);

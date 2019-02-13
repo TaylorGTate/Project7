@@ -9,6 +9,9 @@ export default class Book extends React.Component {
     price: PropTypes.number,
     popularity: PropTypes.number
   };
+  handleAddToCart = (e) => {
+    this.props.handleAddToCart(this.props.book.id);
+  }
 
   render = () => {
     return(
@@ -19,7 +22,13 @@ export default class Book extends React.Component {
         <td>{this.props.book.title}</td>
         <td dangerouslySetInnerHTML={{__html: this.props.book.description}}></td>
         <td>{this.props.book.price}</td>
-        <td>{Number(this.props.book.popularity)}</td>        
+        <td>{Number(this.props.book.popularity)}</td>
+        <td>
+          <a className="btn btn-success"
+            onClick={this.handleAddToCart} >
+            Add to Cart
+          </a>
+        </td>
       </tr>
     )
   };
