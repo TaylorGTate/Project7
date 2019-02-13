@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import BookList from './BookList';
+import SearchForm from './SearchForm';
 
 export default class Catalog extends React.Component {
 
@@ -21,8 +22,10 @@ export default class Catalog extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-    };  
-    
+   };  
+   handleSearch = (books) => {
+    this.setState({ books: books });
+	 };
    handleSortColumn = (name, order) => {
     if (this.state.sort != name) {
       order = 'asc';
@@ -46,12 +49,15 @@ export default class Catalog extends React.Component {
     render = () => {
         return(
       		 <div className="container">
+              <div className="row">
+                      <SearchForm handleSearch={this.handleSearch} />
+              </div>
         			<div className="row">
               				<BookList   books={this.state.books}
                       sort ={this.state.sort}
                       order={this.state.order}
-                      handleSortColumn={this.handleSortColumn}/>
-          			</div>
+                      handleSortColumn={this.handleSortColumn} />
+              </div>
       			</div>  
         	);
     };
