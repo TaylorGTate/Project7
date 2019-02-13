@@ -12,11 +12,6 @@ export default class BookList extends React.Component {
   render = () => {
     var books = [];
 
-    this.props.books.forEach(function(book) {
-      books.push(<Book book={book}
-                         key={'book' + book.id}/>);
-      }
-    );
     var self = this;
     this.props.books.forEach(function(book) {
       books.push(<Book book={book}
