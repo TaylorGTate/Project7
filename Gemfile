@@ -9,7 +9,9 @@ gem "font-awesome-rails"
 
 
 gem 'webpacker'
-gem "sqlite3", "~> 1.3.6"
+group :developement do
+  gem "sqlite3", "~> 1.3.6"
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
