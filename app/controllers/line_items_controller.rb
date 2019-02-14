@@ -80,9 +80,13 @@ class LineItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
       @line_item = LineItem.find(params[:id])
-			if @cart.id != session[:cart_id]
-      	invalid_cart
+      if @line_item.cart_id != session[:cart_id]
+      	invalid_line_item
    		end
+    end
+    def invalid_line_item
+      logger.error"Attempt to access invaild line item #{params[:id]}"
+      redirect_to line_items_url, notice: 'Invalid Line Item'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
