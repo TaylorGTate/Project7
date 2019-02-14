@@ -7,7 +7,7 @@ class StoreController < ApplicationController
   	end
   end
   def search
-      products = Product.where("title LIKE '%#{params[:query]}%'")
+    products = Product.where("LOWER(title) LIKE '%#{params[:query].downcase}%'")
       render json: products
   end
   def index
