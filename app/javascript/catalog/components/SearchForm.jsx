@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default class SearchForm extends React.Component {
   handleSearch = () => {
-    var query = ReactDOM.findDOMNode(this.refs.query).value;
+    var query = ReactDOM.findDOMNode(this.refs.query).value.toLowerCase();
 
     var self = this;
     axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
