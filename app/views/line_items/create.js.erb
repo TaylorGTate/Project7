@@ -4,5 +4,7 @@ if ( $('#notice').length ){
 
 if ($('#cart tr').length == 2) { $('#cart').show(); }
 
+cart = document.getElementById("cart")
+
 $('#cart').html("<%=j render(@cart) %>");
 
