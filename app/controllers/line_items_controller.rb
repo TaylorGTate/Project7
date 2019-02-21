@@ -1,11 +1,3 @@
-#---
-# Excerpted from "Agile Web Development with Rails 5.1",
-# published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material,
-# courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose.
-# Visit http://www.pragmaticprogrammer.com/titles/rails51 for more book information.
-#---
 class LineItemsController < ApplicationController
   include CurrentCart
   skip_before_action :verify_authenticity_token
@@ -38,18 +30,17 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
     session[:counter] = 0
-
+    product.popularity = product.popularity + 1
+    product.update_attribute(:popularity, product.popularity)
+    product.save
     respond_to do |format|
       if @line_item.save
-        product.popularity = product.popularity + 1
-        product.update_attribute(:popularity, product.popularity)
         format.html { redirect_to store_index_url }
         format.js   { @current_item = @line_item }
         format.json { }
       else
         format.html { render :new }
-        format.json { render json: @line_item.errors,
-          status: :unprocessable_entity }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,8 +60,9 @@ class LineItemsController < ApplicationController
   end
 
   def decrement
+    @line_item = LineItem.find(params[:id])
     @cart = Cart.find(session[:cart_id])
-    product = Product.find(params[:id])
+    product = Product.find(@line_item.product.id)
     @line_item = @cart.delete_line_item(product)
     product.popularity = product.popularity - 1
     product.update_attribute(:popularity, product.popularity)
@@ -79,12 +71,12 @@ class LineItemsController < ApplicationController
         @line_item.destroy
         format.html { redirect_to store_index_url }
         format.js   {@current_item = @line_item}
-        format.json {redirect_to_cart_path(@line_item.cart)}
+        format.json { }
       else 
         if @line_item.save
           format.html {redirect_to_store_index_url}
           format.js   {@current_item = @line_item}
-          format.json {redirect_to cart_path(@line_item.cart)}
+          format.json { }
         else
           format.html { render :new }
           format.json { render json: @line_item.errors,

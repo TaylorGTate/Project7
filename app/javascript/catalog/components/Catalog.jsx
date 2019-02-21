@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import BookList from './BookList';
 import SearchForm from './SearchForm';
-
+import Cart from './Cart';
 export default class Catalog extends React.Component {
 
     state = { books: [],
@@ -25,12 +25,13 @@ export default class Catalog extends React.Component {
    };
    handleAddToCart = (id) => {
     var self = this;
-
+    
     axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
     axios.post('/line_items', {product_id: id})
         .then(function (response) {
             console.log(response);
             console.log(response.data);
+            self.refs.cart.handleAddToCart(response.data);
          })
         .catch(function (error) {
             console.log(error);
@@ -67,7 +68,10 @@ export default class Catalog extends React.Component {
                       <SearchForm handleSearch={this.handleSearch} />
               </div>
         			<div className="row">
-              				<BookList   books={this.state.books}
+                      <div className="col-md-12 pull-right">
+                        <Cart ref="cart" id={this.props.cart_id}/>
+                      </div>
+                      <BookList   books={this.state.books}
                       sort ={this.state.sort}
                       order={this.state.order}
                       handleSortColumn={this.handleSortColumn}

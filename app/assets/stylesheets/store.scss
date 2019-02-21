@@ -6,6 +6,25 @@
 
 .store {
   max-width: 80em;
+	.spa_cart {    
+    text-align: right;
+
+    float: right;
+    padding-bottom: 5px;
+
+    .item_price, .total_line {
+      text-align: right;
+    }
+
+    .total_line .total_cell {
+      font-weight: bold;
+      border-top: 1px solid #595;
+    }
+
+    input {
+      color: buttontext;
+    }
+  } 
   ul.catalog {
     border-top: solid .250em;
     list-style: none;
