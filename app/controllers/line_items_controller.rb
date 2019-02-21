@@ -41,6 +41,8 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
+        product.popularity = product.popularity + 1
+        product.update_attribute(:popularity, product.popularity)
         format.html { redirect_to store_index_url }
         format.js   { @current_item = @line_item }
         format.json { redirect_to cart_path(@line_item.cart)} 
@@ -70,6 +72,8 @@ class LineItemsController < ApplicationController
     @cart = Cart.find(session[:cart_id])
     product = Product.find(params[:id])
     @line_item = @cart.delete_line_item(product)
+    product.popularity = product.popularity - 1
+    product.update_attribute(:popularity, product.popularity)
     respond_to do |format|
       if @line_item.quantity <= 0
         @line_item.destroy
