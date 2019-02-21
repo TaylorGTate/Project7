@@ -38,8 +38,7 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
     session[:counter] = 0
-    product.popularity = product.popularity + 1
-    product.update_attribute(:popularity, product.popularity)
+
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_index_url }
@@ -68,11 +67,31 @@ class LineItemsController < ApplicationController
   end
 
   def decrement
-    @line_item.destory
+    @cart = Cart.find(session[:cart_id])
+    product = Product.find(params[:id])
+    @line_item = @cart.delete_line_item(product)
     respond_to do |format|
-      format.js
+      if @line_item.quantity <= 0
+        @line_item.destroy
+        format.html { redirect_to store_index_url }
+        format.js   {@current_item = @line_item}
+        format.json {redirect_to_cart_path(@line_item.cart)}
+      else 
+        if @line_item.save
+          format.html {redirect_to_store_index_url}
+          format.js   {@current_item = @line_item}
+          format.json {redirect_to cart_path(@line_item.cart)}
+        else
+          format.html { render :new }
+          format.json { render json: @line_item.errors,
+                        status: :unprocessable_entity}
+        end
+      end
     end
   end
+
+
+
   
   # DELETE /line_items/1
   # DELETE /line_items/1.json
