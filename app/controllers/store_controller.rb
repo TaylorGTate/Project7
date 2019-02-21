@@ -19,6 +19,7 @@ class StoreController < ApplicationController
 		respond_to do |format|
         format.html {
             if (params[:spa] && params[:spa] == "true")
+                @spa = true
                 render 'index_spa'
             # the else case below is by default
             else

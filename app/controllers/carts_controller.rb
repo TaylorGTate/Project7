@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
@@ -11,6 +12,10 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /carts/new

@@ -30,7 +30,7 @@ export default class Catalog extends React.Component {
     axios.post('/line_items', {product_id: id})
         .then(function (response) {
             console.log(response);
-            window.location = response.headers.location;
+            console.log(response.data);
          })
         .catch(function (error) {
             console.log(error);

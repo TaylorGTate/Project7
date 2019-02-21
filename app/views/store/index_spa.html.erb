@@ -3,7 +3,7 @@
 <% end %>
 
 <%= content_tag :div,
-    id: "catalog"  do %>
-
+  id: "catalog",
+  cart_id: @cart.id do %>
     <%= javascript_pack_tag 'catalog' %>
 <% end %>
