@@ -66,6 +66,7 @@ class LineItemsController < ApplicationController
     @line_item = @cart.delete_line_item(product)
     product.popularity = product.popularity - 1
     product.update_attribute(:popularity, product.popularity)
+    product.save
     respond_to do |format|
       if @line_item.quantity <= 0
         @line_item.destroy
@@ -78,7 +79,6 @@ class LineItemsController < ApplicationController
           format.js   {@current_item = @line_item}
           format.json { }
         else
-          format.html { render :new }
           format.json { render json: @line_item.errors,
                         status: :unprocessable_entity}
         end
