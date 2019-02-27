@@ -23,6 +23,24 @@ export default class Catalog extends React.Component {
                 console.log(error);
             });
    };
+
+    handleCheckout = (id) => {
+    var self = this;
+    
+    axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
+    axios.post('/order/new')
+        .then(function (response) {
+            console.log(response);
+            console.log(response.data);
+            self.refs.cart.handleCheckout(response.data);
+
+         })
+        .catch(function (error) {
+            console.log(error);
+            alert('Cannot sort events: ', error);
+    }); 
+   };
+
    handleAddToCart = (id) => {
     var self = this;
     
