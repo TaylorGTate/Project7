@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
 
 <p>
   <strong>Name:</strong>
@@ -22,3 +24,27 @@
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+
+<div class="container">
+    <h3>What books does this order contain?</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>Title</th>
+        <th>Nr. Copies</th>
+				<th>Unit Price</th>
+      </tr>
+
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.title %></td>
+            <% product.line_items.each do |line_item| %>
+                <% if (@order.id == line_item.order_id)%>
+                    <td><%= line_item.quantity %></td>
+                <% end %>
+            <% end %>
+            <td><%= product.price %></td>
+
+          </tr>
+        <% end %>
+    </table>
+</div>
