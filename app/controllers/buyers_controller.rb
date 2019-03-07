@@ -1,6 +1,6 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:edit, :update]
-
+  before_action :authenticate_account!
   # GET /buyers/1/edit
   def edit
   end

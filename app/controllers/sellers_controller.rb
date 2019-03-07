@@ -1,6 +1,6 @@
 class SellersController < ApplicationController
   before_action :set_seller, only: [:edit, :update]
-
+  before_action :authenticate_account!
   # GET /sellers/1/edit
   def edit
   end

@@ -95,6 +95,15 @@ class LineItemsController < ApplicationController
     end
 	end 
 
+	def show_orders_for_buyer
+    buyer = Buyer.find(params[:id])   
+    products = buyer.products
+    @line_items = LineItem.where(product_id: products)
+    products.each do |product|
+      logger.info(product)
+    end
+	end
+
   
   # DELETE /line_items/1
   # DELETE /line_items/1.json

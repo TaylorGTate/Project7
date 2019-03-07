@@ -17,7 +17,7 @@
                         <li><%= link_to 'My Products', seller_products_path(current_account.accountable_id) %></li>
                         <li><%= link_to 'My Orders', orders_seller_path(current_account.accountable_id) %></li>
                     <% else %>
-                        <li><%= link_to 'My Orders', "#" %></li>
+                        <li><%= link_to 'My Orders', buyer_orders_path(current_account.accountable_id), class: "dropdown-item" %></li>
                     <% end %>
             </ul>
     </li>

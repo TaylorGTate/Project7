@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_account!
   # GET /products
   # GET /products.json
   def index
@@ -33,6 +33,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 		if current_account && current_account.accountable_type == "Seller"
         @product.seller = current_account.accountable
+    end
 
     respond_to do |format|
       if @product.save
@@ -47,7 +48,6 @@ class ProductsController < ApplicationController
       end
     end
   end
-end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
