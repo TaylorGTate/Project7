@@ -8,28 +8,19 @@
   </head>
 
   <body>
-    <header class="main">
-      <%= link_to image_tag('logo.svg', alt: 'The Pragmatic Bookshelf'), store_index_path(spa:
-                              false)  %>
-      <h1><%= @page_title %></h1>
+		<header class="main">
+      <%= render 'layouts/navigation' %>
     </header>
     <section class="content">
       <% if @spa.nil? %>
         <nav class="side_nav">
-            <div id="cart" class="carts">
-              <%= render_if @cart && @cart.line_items.any?, @cart %>
-            </div>
-          <ul>
-            <li><%= link_to "Home", store_index_path(spa: false) %></li>
-            <li><%= link_to "Home (SPA)", store_index_path(spa: true) %></li>
-            <li><a href="/questions">Questions</a></li>
-            <li><a href="/news">News</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
+          <div id="cart">
+            <%= render_if @cart && @cart.line_items.any?, @cart %>
+          </div>
         </nav>
       <% end %>
-      <main class='<%= controller.controller_name %>' style="width:100%">
-        <%= yield %>
+      <main class='<%= controller.controller_name %>'>
+    		<%= yield %>
       </main>
     </section>
   </body>

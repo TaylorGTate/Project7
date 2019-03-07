@@ -1,0 +1,15 @@
+@import "bootstrap";
+
+.navbar {
+    position: relative;
+    min-height: 40px;
+
+    border-bottom: 2px solid;
+    font: small-caps 25px/25px "Arial", serif;
+    color: #282;
+    text-align: center;
+
+    .navbar-nav {
+        font-size: inherit;
+    }
+}

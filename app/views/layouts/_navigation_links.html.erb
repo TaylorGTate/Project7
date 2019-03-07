@@ -1,0 +1,9 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Catalog Links
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%= link_to 'Catalog', store_index_path(spa: false), class: "dropdown-item"  %>
+        <%= link_to "Catlog(SPA)", store_index_path(spa: true), class: "dropdown-item" %>
+    </div>
+</li>
