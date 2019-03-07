@@ -1,0 +1,16 @@
+@import "bootstrap";
+
+.registrations,
+.sessions,
+.passwords,
+.buyers,
+.sellers {
+    width: 80%;
+    margin: 0 auto;
+
+    .form-actions {
+        .btn {
+            @extend .btn-primary
+        }
+    }
+}

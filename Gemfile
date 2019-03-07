@@ -5,7 +5,7 @@ ruby '2.6.0'
 gem 'figaro'
 gem 'faker'
 gem 'kaminari'
-
+gem 'simple_form'
 gem "jquery-rails"
 gem "bootstrap", "~> 4.2.1"
 gem "font-awesome-rails"
