@@ -7,3 +7,18 @@
         <%= link_to "Catlog(SPA)", store_index_path(spa: true), class: "dropdown-item" %>
     </div>
 </li>
+<% if account_signed_in? %>
+    <li class="nav-item">
+        <%= link_to 'Edit account', edit_account_registration_path, class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+        <%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %>
+    </li>
+<% else %>
+    <li class="nav-item">
+        <%= link_to 'Sign in', new_account_session_path, class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+        <%= link_to 'Sign up', new_account_registration_path,  class:"nav-link" %>
+    </li>
+<% end %>

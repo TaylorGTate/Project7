@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :accounts
   resources :orders
   mount ActionCable.server => '/cable'
   get 'search', to: 'store#search'

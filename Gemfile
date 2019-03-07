@@ -9,7 +9,7 @@ gem 'kaminari'
 gem "jquery-rails"
 gem "bootstrap", "~> 4.2.1"
 gem "font-awesome-rails"
-
+gem 'devise'
 gem 'json', '2.0.2'
 gem 'webpacker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
