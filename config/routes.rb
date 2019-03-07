@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+	resources :buyers, only: [:edit, :update]
+	resources :sellers, only: [:edit, :update]
   devise_for :accounts,  :controllers => { :registrations => 'registrations' }
   resources :orders
   mount ActionCable.server => '/cable'

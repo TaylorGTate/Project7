@@ -1,0 +1,19 @@
+<% if @buyer.name.nil? or @buyer.name == "" %>
+    <h2>Edit Buyer's Profile</h2>
+<% else %>
+    <h2>Edit <%= @buyer.name %>'s Profile</h2>
+<% end %>
+
+<%= simple_form_for(@buyer, as: @buyer, url: buyer_path(@buyer), html: { method: :patch }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, required: true, autofocus: true %>
+    <%= f.input :address, required: true %>
+    <%= f.input :pay_type, collection: Order::pay_types,  as: :radio_buttons %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
+  </div>
+<% end %>
