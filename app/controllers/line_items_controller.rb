@@ -4,6 +4,10 @@ class LineItemsController < ApplicationController
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
+	def pundit_user
+    current_account
+  end
+
   # GET /line_items
   # GET /line_items.json
   def index
@@ -96,8 +100,10 @@ class LineItemsController < ApplicationController
 	end 
 
 	def show_orders_for_buyer
+		seller = Seller.find(params[:id])
     buyer = Buyer.find(params[:id])   
     products = buyer.products
+		authorize seller, :show_orders_for_seller?
     @line_items = LineItem.where(product_id: products)
     products.each do |product|
       logger.info(product)

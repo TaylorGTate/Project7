@@ -3,11 +3,17 @@ class SellersController < ApplicationController
   before_action :authenticate_account!
   # GET /sellers/1/edit
   def edit
+    authorize @seller
+  end
+
+  def pundit_user
+    current_account
   end
 
   # PATCH/PUT /sellers/1
   # PATCH/PUT /sellers/1.json
   def update
+    authorize @seller
     respond_to do |format|
       if @seller.update(seller_params)
         format.html { redirect_to store_index_url, notice: "The profile of the seller #{@seller.name} was successfully updated." }
