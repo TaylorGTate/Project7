@@ -10,7 +10,13 @@ Rails.application.routes.draw do
 #  root to: redirect('/products')
   resources :products
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htm
+	resources :sellers do
+    resources :products                                         # a nested route: seller_products_path
 
+    member do
+        get 'orders', to: 'line_items#show_orders_for_seller'   # a nested route: orders_seller_path
+    end
+	end
   resources :line_items do
     member do
       patch "decrement"

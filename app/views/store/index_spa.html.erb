@@ -2,8 +2,18 @@
     <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<%= content_tag :div,
-  id: "catalog",
-  cart_id: @cart.id do %>
+<% if account_signed_in? and current_account.accountable_type == "Seller" %>
+    <%= content_tag :div,
+            id: "catalog",
+            seller: true,
+            cart_id: @cart.id  do %>
     <%= javascript_pack_tag 'catalog' %>
+    <% end %>
+<%else %>
+    <%= content_tag :div,
+      id: "catalog",
+      seller: false,
+      cart_id: @cart.id  do %>
+    <%= javascript_pack_tag 'catalog' %>
+    <% end %>
 <% end %>

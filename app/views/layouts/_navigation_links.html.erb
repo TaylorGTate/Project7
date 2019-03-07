@@ -8,6 +8,19 @@
     </div>
 </li>
 <% if account_signed_in? %>
+	<li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Resources <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                    <% if current_account.accountable_type == "Seller" %>
+                        <li><%= link_to 'My Products', seller_products_path(current_account.accountable_id) %></li>
+                        <li><%= link_to 'My Orders', orders_seller_path(current_account.accountable_id) %></li>
+                    <% else %>
+                        <li><%= link_to 'My Orders', "#" %></li>
+                    <% end %>
+            </ul>
+    </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="editAccountDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Edit Settings (<%= (current_account.accountable.name.nil? or current_account.accountable.name == "") ? "No Name" : current_account.accountable.name %>)

@@ -92,6 +92,7 @@ export default class Catalog extends React.Component {
                       <BookList   books={this.state.books}
                       sort ={this.state.sort}
                       order={this.state.order}
+                      seller={this.props.seller}
                       handleSortColumn={this.handleSortColumn}
                       handleAddToCart={this.handleAddToCart} />
               </div>

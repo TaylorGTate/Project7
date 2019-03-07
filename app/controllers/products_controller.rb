@@ -4,7 +4,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+	   if (params[:seller_id])
+      @seller = Seller.find(params[:seller_id])
+      @products = @seller.products
+    else
+      @products = Product.all
+    end   
   end
 
   # GET /products/1
@@ -26,6 +31,8 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+		if current_account && current_account.accountable_type == "Seller"
+        @product.seller = current_account.accountable
 
     respond_to do |format|
       if @product.save
@@ -40,6 +47,7 @@ class ProductsController < ApplicationController
       end
     end
   end
+end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json

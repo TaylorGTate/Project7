@@ -1,0 +1,26 @@
+<div class="container">
+  <h3>Orders Containing My Books:</h3>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th colspan="2" align="center">Book Info</th>
+      <th colspan="3" align="center">Order Info</th>
+    </tr>
+    <tr>
+      <th>Book Title</th>
+      <th>Nr. Copies</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Pay Type</th>
+    </tr>
+
+    <% @line_items.each do |line_item| %>
+      <tr>
+        <td><%= line_item.product.title %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= line_item.order.name %></td>
+        <td><%= line_item.order.address %></td>
+        <td><%= line_item.order.pay_type %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
