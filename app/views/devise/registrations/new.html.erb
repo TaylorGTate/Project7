@@ -19,7 +19,7 @@
                 required: true, 
                 as: :radio_buttons, 
                 label: "Type of Account", 
-                collection: Account::ACCOUNT_TYPES, 
+                collection: Account::ACCOUNT_TYPES.drop(1), 
                 checked: 'Buyer'%>
   </div>
 

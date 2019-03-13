@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :accounts
+      resources :buyers
+      resources :carts
+      resources :line_items
+      resources :orders
+      resources :products
+      resources :sellers
+      resources :super_accounts
+
+      root to: "accounts#index"
+    end
 	resources :buyers, only: [:edit, :update]
 	resources :sellers, only: [:edit, :update]
   devise_for :accounts,  :controllers => { :registrations => 'registrations' }

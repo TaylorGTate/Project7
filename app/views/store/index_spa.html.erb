@@ -2,7 +2,8 @@
     <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<% if account_signed_in? and current_account.accountable_type == "Seller" %>
+
+<% if account_signed_in? and current_account.accountable_type == "Seller"  %>
     <%= content_tag :div,
             id: "catalog",
             seller: true,
