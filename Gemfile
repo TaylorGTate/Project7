@@ -16,7 +16,7 @@ gem 'webpacker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 
-gem 'sqlite3', '~> 1.3.6'
+
 gem 'administrate'
 
 # Use Puma as the app server
