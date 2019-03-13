@@ -9,9 +9,14 @@
 </li>
 <% if account_signed_in? %>
 	<li role="presentation" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               Resources <span class="caret"></span>
             </a>
+						<ul class="dropdown-menu">
+	                     <% if current_account.accountable_type == "SuperAccount" %>
+                         <li><%= link_to 'Admin Dashboard', admin_root_path%></li>
+ 	                     <% end %>
+ 	         </ul>
             <ul class="dropdown-menu">
                     <% if current_account.accountable_type == "Seller" %>
                         <li><%= link_to 'My Products', seller_products_path(current_account.accountable_id) %></li>
@@ -20,19 +25,23 @@
                         <li><%= link_to 'My Orders', buyer_orders_path(current_account.accountable_id), class: "dropdown-item" %></li>
                     <% end %>
             </ul>
-    </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="editAccountDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Edit Settings (<%= (current_account.accountable.name.nil? or current_account.accountable.name == "") ? "No Name" : current_account.accountable.name %>)
-    </a>
-    <div class="dropdown-menu" aria-labelledby="editAccountDropdownMenuLink">
-      <% if current_account.accountable_type == "Seller" %>
-        <%= link_to 'Seller Profile', edit_seller_path(current_account.accountable_id), class: "dropdown-item" %><% else %>
-        <%= link_to 'Buyer Profile', edit_buyer_path(current_account.accountable_id), class: "dropdown-item"  %>
-      <% end %>
-      <%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %>
-    </div>
   </li>
+  <% if current_account.accountable_type == "Seller"or current_account.accountable_type == "Buyer" %>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="editAccountDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Edit Settings (<%= (current_account.accountable.name.nil? or current_account.accountable.name == "") ? "No Name" : current_account.accountable.name %>)
+      </a>
+      
+      <div class="dropdown-menu" aria-labelledby="editAccountDropdownMenuLink">
+        <% if current_account.accountable_type == "Seller" %>
+          <%= link_to 'Seller Profile', edit_seller_path(current_account.accountable_id), class: "dropdown-item" %>
+        <% else %>
+          <%= link_to 'Buyer Profile', edit_buyer_path(current_account.accountable_id), class: "dropdown-item"  %>
+        <% end %>
+        <%= link_to 'Account Settings', edit_account_registration_path, class: "dropdown-item"  %>
+      </div>
+    </li>
+  <%end%>
   <li class="nav-item">
     <%= link_to 'Sign out', destroy_account_session_path, :method=>'delete', class:"nav-link" %>
   </li>
