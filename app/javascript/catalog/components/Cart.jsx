@@ -1,7 +1,7 @@
 import React from 'react';
 import LineItems from './LineItems';
 import axios from 'axios';
-
+import { Link } from "react-router-dom"
 export default class Cart extends React.Component {
   state = {
     id: 0,
@@ -98,14 +98,19 @@ export default class Cart extends React.Component {
           <LineItems total_price={this.state.total_price}
                      line_items={this.state.line_items} 
                      handleRemoveFromCart={this.handleRemoveFromCart} />
-
-          <a className="btn btn-success"
-             onClick={this.handleCheckout} >
-            Checkout
-          </a>
+				  &nbsp;
+					{
+          //<a className="btn btn-success"
+            // onClick={this.handleCheckout} >
+            //Checkout
+          //</a>
+					}
+       		<Link className="btn btn-success" to={{pathname:"/order_form"}}>
+                  Checkout
+          </Link> 
           <a className="btn btn-success"
              onClick={this.handleEmptyCart} >
-            Empty Cart
+             Empty Cart
           </a>
 
         </div>
