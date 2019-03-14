@@ -1,7 +1,6 @@
 class Order < ApplicationRecord
   validates :name, :address, :email, :pay_type, presence: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
-  validates :pay_type, inclusion: pay_type.keys
   belongs_to :buyer, optional: true
   has_many :line_items, dependent: :destroy
   has_many :products, through: :line_items 
@@ -10,7 +9,6 @@ class Order < ApplicationRecord
 		"Credit card"  => 1,
 		"Purchase order"  => 2
 	}
-  validates :name, :address, :email, presence: true
   validates :pay_type, inclusion: pay_types.keys
   paginates_per 10
 
