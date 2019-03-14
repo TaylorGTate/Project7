@@ -87,7 +87,7 @@ export default class Catalog extends React.Component {
               </div>
         			<div className="row">
                       <div className="col-md-12 pull-right">
-                        <Cart ref="cart" id={this.props.cart_id}/>
+                        <Cart ref="cart" id={this.props.cart_id} handlePopularity={this.handlePopularity} url={this.props.match.url}/>
                       </div>
                       <BookList   books={this.state.books}
                       sort ={this.state.sort}

@@ -45,7 +45,7 @@ export default class Cart extends React.Component {
 
   };
 
- handleCheckout = () => {
+/* handleCheckout = () => {
     var self = this;
 
     axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
@@ -61,7 +61,7 @@ export default class Cart extends React.Component {
         alert('Cannot  open order form: ', error);
     });
 
-  };
+  };*/
 
  handleEmptyCart = () => {
     var self = this;
@@ -90,38 +90,49 @@ export default class Cart extends React.Component {
     this.setState({ line_items: cart.line_items});
   };
 
- render = () => {
-    if (this.state.total_price != 0) {
-      return(
-        <div className="spa_cart">
-          <h2>Your Cart</h2>
-          <LineItems total_price={this.state.total_price}
-                     line_items={this.state.line_items} 
-                     handleRemoveFromCart={this.handleRemoveFromCart} />
-				  &nbsp;
-					{
-          //<a className="btn btn-success"
-            // onClick={this.handleCheckout} >
-            //Checkout
-          //</a>
-					}
-       		<Link className="btn btn-success" to={{pathname:"/order_form"}}>
-                  Checkout
-          </Link> 
-          <a className="btn btn-success"
-             onClick={this.handleEmptyCart} >
-             Empty Cart
-          </a>
+     render = () => {
+        if (this.state.total_price != 0) {
 
-        </div>
-      )
-    }
-    else {
-      return (
-        <div className="spa_cart">
-          <h2>Your Cart</h2>
-        </div>
-      );
-    }
-  }
+          var buttons = (this.props.url != "/order_form") ?
+          (
+            <div>
+              <a className="btn btn-success" 
+                 onClick={this.handleEmptyCart} >
+                 Empty Cart
+              </a>
+              &nbsp;
+              <Link className="btn btn-success" to={{pathname:"/order_form"}}>
+                  Checkout
+              </Link>
+            </div>
+          )
+          :
+          (
+             <a className="btn btn-success"
+                onClick={this.handleEmptyCart} >
+              Empty Cart
+             </a>
+          )    
+
+          return(
+            <div className="spa_cart">
+              <h2>Your Cart</h2>
+
+              <LineItems total_price={this.state.total_price}
+                         line_items={this.state.line_items} 
+                         handleRemoveFromCart={this.handleRemoveFromCart} />
+
+              {buttons}
+            </div>
+          )
+        }
+        else {
+          return (
+            <div className="spa_cart">
+              <h2>Your Cart</h2>
+            </div>
+          );
+        }
+      }
+ 
 }
