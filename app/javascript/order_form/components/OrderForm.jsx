@@ -57,7 +57,7 @@ export default class OrderForm extends React.Component {
     };
 
     handleSelectPayType = selected_pay_type => {
-        // console.log(selected_pay_type);
+        console.log(selected_pay_type);
         this.setState( {pay_type: selected_pay_type});
     }
 
