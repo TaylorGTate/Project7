@@ -16,14 +16,14 @@
 	                     <% if current_account.accountable_type == "SuperAccount" %>
                          <li><%= link_to 'Admin Dashboard', admin_root_path%></li>
  	                     <% end %>
-            </ul>
-            <ul class="dropdown-menu">
+            
+            
 							<% if current_account.accountable_type == "Buyer" %>
                            <li><%= link_to 'My Orders', buyer_orders_path(current_account.accountable_id) %></li>
                       <% end %>
 
-            </ul>
-            <ul class="dropdown-menu">
+            
+            
                     <% if current_account.accountable_type == "Seller" %>
                         <li><%= link_to 'My Products', seller_products_path(current_account.accountable_id) %></li>
                         <li><%= link_to 'My Orders', orders_seller_path(current_account.accountable_id) %></li>
