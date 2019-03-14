@@ -64,12 +64,13 @@ export default class OrderForm extends React.Component {
     render = () => {
         const { errors } = this.state;
         console.log(errors)
+        var {true_cart_id} = this.props.location
 
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 pull-right">
-                        <Cart ref="cart" id={this.props.cart_id} handlePopularity={this.handlePopularity} url={this.props.match.url}/>
+                        <Cart ref="cart" id={true_cart_id ? true_cart_id : this.props.cart_id} handlePopularity={this.handlePopularity} url={this.props.match.url}/>
                     </div>
                 </div>
 
@@ -159,7 +160,7 @@ export default class OrderForm extends React.Component {
                             className="btn btn-success"
                         />
                         &nbsp;
-                        <Link className="btn btn-success" to={{pathname:"/"}}>
+                        <Link className="btn btn-success" to={{pathname:"/", true_cart_id: true_cart_id }}>
                             Cancel
                         </Link>
                     </div>

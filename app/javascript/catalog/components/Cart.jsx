@@ -101,7 +101,7 @@ export default class Cart extends React.Component {
                  Empty Cart
               </a>
               &nbsp;
-              <Link className="btn btn-success" to={{pathname:"/order_form"}}>
+              <Link className="btn btn-success" to={{pathname:"/order_form", true_cart_id: this.state.id}}>
                   Checkout
               </Link>
             </div>
