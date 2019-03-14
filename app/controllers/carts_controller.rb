@@ -86,6 +86,9 @@ class CartsController < ApplicationController
 
     def invalid_cart
       logger.error"Attempt to access invalid cart #{params[:id]}"
-      redirect_to store_index_url, notice: 'Invalid cart'
+     	respond_to do |format|
+      	format.html { redirect_to store_index_url, notice: "Invalid cart" }
+	    	format.json { render json: {id: "invalid", line_items: [], total_price: 0} }
+      end 
     end
 end
